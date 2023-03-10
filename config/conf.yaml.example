@@ -1,0 +1,15 @@
+gRpc:
+ irisIp: ""
+ irisPort: ""
+
+ stargazeIp: ""
+ stargazePort: ""
+
+ junoIp: ""
+ junoPort: ""
+
+ uptickIp: ""
+ upticePort: ""
+
+ omniflixIp: ""
+ omniflixPort: ""
