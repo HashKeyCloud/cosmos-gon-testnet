@@ -8,11 +8,13 @@ import (
 )
 
 var (
-	Logger      = logrus.New()
-	EventLogger = logrus.New()
-	MailLogger  = logrus.New()
-	RPCLogger   = logrus.New()
-	DBLogger    = logrus.New()
+	Logger        = logrus.New()
+	EventLogger   = logrus.New()
+	MailLogger    = logrus.New()
+	RPCLogger     = logrus.New()
+	DBLogger      = logrus.New()
+	ServerLogger  = logrus.New()
+	HandlerLogger = logrus.New()
 )
 
 func InitLogger(logger *logrus.Logger, path string) error {

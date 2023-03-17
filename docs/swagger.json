@@ -1,0 +1,197 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a Cosmos GoN dashboard.",
+        "title": "Cosmos GoN API",
+        "termsOfService": "http://hashquark.io",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.hashquark.io",
+            "email": "wangzezheng@hashquark.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "127.0.0.1:8080",
+    "paths": {
+        "/server/issueNFT": {
+            "get": {
+                "description": "get NFT issue events",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Server"
+                ],
+                "summary": "Get NFT Issue events",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/server/mintNFT": {
+            "get": {
+                "description": "get NFT mint events",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Server"
+                ],
+                "summary": "Get NFT Mint events",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "classId",
+                        "name": "classId",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/server/mintNFTs": {
+            "get": {
+                "description": "get all NFT mint events",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Server"
+                ],
+                "summary": "Get All NFT Mint events",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/server/transferNFT": {
+            "post": {
+                "description": "get NFT mint events",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Server"
+                ],
+                "summary": "Get NFT Mint events",
+                "parameters": [
+                    {
+                        "description": "nfts",
+                        "name": "nfts",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.AllNFT"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/server/transferNFTs": {
+            "get": {
+                "description": "get all NFT transfer path",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Server"
+                ],
+                "summary": "Get All NFT Transfer Path",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handler.Response": {
+            "type": "object",
+            "properties": {
+                "body": {},
+                "code": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "message_zh": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "types.AllNFT": {
+            "type": "object",
+            "required": [
+                "classID",
+                "nftid"
+            ],
+            "properties": {
+                "classID": {
+                    "type": "string"
+                },
+                "nftid": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

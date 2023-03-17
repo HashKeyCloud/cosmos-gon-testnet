@@ -1,15 +1,24 @@
 gRpc:
- irisIp: ""
- irisPort: ""
+ irisIp: "34.80.93.133"
+ irisPort: "9090"
 
- stargazeIp: ""
- stargazePort: ""
+  junoIp: "juno-testnet-grpc.polkachu.com"
+  junoPort: "12690"
 
- junoIp: ""
- junoPort: ""
+ omniflixIp: "65.21.93.56"
+ omniflixPort: "9090"
 
- uptickIp: ""
- upticePort: ""
+ stargazeIp: "grpc-1.elgafar-1.stargaze-apis.com"
+ stargazePort: "26660"
 
- omniflixIp: ""
- omniflixPort: ""
+ uptickIp: "52.220.252.160"
+ upticePort: "9090"
+
+monitor:
+  timeInterval: 600
+
+
+
+log:
+  path: "logPath"
+  level: "info"

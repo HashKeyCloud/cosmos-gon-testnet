@@ -50,7 +50,7 @@ func TestGetMintNFT(t *testing.T) {
 			NFTCli:       nftCli,
 		},
 	}
-	nfts, err := cc.GetMintNFT("hashquarklogo")
+	nfts, err := cc.GetMintNFT()
 	if err != nil {
 		fmt.Println("error:", err)
 	}
@@ -75,7 +75,7 @@ func TestNFTTransferByIBC(t *testing.T) {
 		},
 	}
 
-	txs, err := cc.GetNFTTransferByIBC("hashquarklogo")
+	txs, err := cc.GetNFTTransferByIBC()
 	if err != nil {
 		fmt.Println("get nfr transfer by ibc fail, err:", err)
 	}
@@ -84,7 +84,7 @@ func TestNFTTransferByIBC(t *testing.T) {
 	}
 }
 
-func TestNFTTransfer(t *testing.T) {
+func TestNFTTransferOnIris(t *testing.T) {
 	grpcConn, err := rpc.InitChainRpcCli("34.80.93.133:9090")
 	if err != nil {
 		logger.Error("Failed to create evmos gRPC client, err:", err)
@@ -100,7 +100,32 @@ func TestNFTTransfer(t *testing.T) {
 		},
 	}
 
-	txs, err := cc.GetNFTTransfer()
+	txs, err := cc.GetNFTTransferOnIris()
+	if err != nil {
+		fmt.Println("get nfr transfer by ibc fail, err:", err)
+	}
+	for _, tx := range txs {
+		fmt.Println("nft transfer:", tx)
+	}
+}
+
+func TestNFTTransferOnOmniFlix(t *testing.T) {
+	grpcConn, err := rpc.InitChainRpcCli("65.21.93.56:9090")
+	if err != nil {
+		logger.Error("Failed to create evmos gRPC client, err:", err)
+	}
+
+	txCli := tx.NewServiceClient(grpcConn)
+	nftCli := nft.NewQueryClient(grpcConn)
+
+	cc := &IrisCli{
+		ChainCli: &rpc.ChainCli{
+			TxCli:  txCli,
+			NFTCli: nftCli,
+		},
+	}
+
+	txs, err := cc.GetNFTTransferOnOmniflix()
 	if err != nil {
 		fmt.Println("get nfr transfer by ibc fail, err:", err)
 	}
@@ -125,7 +150,7 @@ func TestNFTTransferByContract(t *testing.T) {
 		},
 	}
 
-	txs, err := cc.GetNFTTransferByContract("hashquarklogo")
+	txs, err := cc.GetNFTTransferByContract()
 	if err != nil {
 		fmt.Println("get nfr transfer by ibc fail, err:", err)
 	}
@@ -134,7 +159,7 @@ func TestNFTTransferByContract(t *testing.T) {
 	}
 }
 
-func TestTxByHash(t *testing.T) {
+/*func TestTxByHash(t *testing.T) {
 	grpcConn, err := rpc.InitChainRpcCli("34.80.93.133:9090")
 	if err != nil {
 		logger.Error("Failed to create evmos gRPC client, err:", err)
@@ -150,4 +175,4 @@ func TestTxByHash(t *testing.T) {
 		},
 	}
 	cc.GetTxByHash("CB3BD702DFF7FA8B819AB6FC6E277F3766908E7CB68C31FFC5542012FDFC6760")
-}
+}*/

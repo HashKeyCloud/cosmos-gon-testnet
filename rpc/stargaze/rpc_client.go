@@ -1,4 +1,4 @@
-package iris
+package stargaze
 
 import (
 	"fmt"
@@ -11,23 +11,23 @@ import (
 	"cosmos-gon-testnet/rpc"
 )
 
-type IrisCli struct {
+type StargazeCli struct {
 	*rpc.ChainCli
 }
 
 // InitRpcCli Create a new RPC server
-func InitIrisRpcCli() (*IrisCli, error) {
-	endpoint := fmt.Sprintf("%s:%s", viper.GetString("gRpc.irisIp"), viper.GetString("gRpc.irisPort"))
+func InitStargazeRpcCli() (*StargazeCli, error) {
+	endpoint := fmt.Sprintf("%s:%s", viper.GetString("gRpc.stargazeIp"), viper.GetString("gRpc.stargazePort"))
 	grpcConn, err := rpc.InitChainRpcCli(endpoint)
 	if err != nil {
-		logger.Error("Failed to create iris gRPC client, err:", err)
+		logger.Error("Failed to create stargaze gRPC client, err:", err)
 		return nil, err
 	}
 
 	txCli := tx.NewServiceClient(grpcConn)
 	nftCli := nft.NewQueryClient(grpcConn)
 
-	return &IrisCli{
+	return &StargazeCli{
 		ChainCli: &rpc.ChainCli{
 			TxCli:  txCli,
 			NFTCli: nftCli,

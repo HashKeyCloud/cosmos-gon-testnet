@@ -1,10 +1,12 @@
 package config
 
 import (
-	"cosmos-gon-testnet/log"
 	"fmt"
-	"github.com/spf13/viper"
 	"strings"
+
+	"github.com/spf13/viper"
+
+	"cosmos-gon-testnet/log"
 )
 
 func InitConfig(cfg string) error {

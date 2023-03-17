@@ -1,4 +1,4 @@
-package iris
+package omniflix
 
 import (
 	"fmt"
@@ -11,23 +11,23 @@ import (
 	"cosmos-gon-testnet/rpc"
 )
 
-type IrisCli struct {
+type OmniflixCli struct {
 	*rpc.ChainCli
 }
 
 // InitRpcCli Create a new RPC server
-func InitIrisRpcCli() (*IrisCli, error) {
-	endpoint := fmt.Sprintf("%s:%s", viper.GetString("gRpc.irisIp"), viper.GetString("gRpc.irisPort"))
+func InitOmniflixRpcCli() (*OmniflixCli, error) {
+	endpoint := fmt.Sprintf("%s:%s", viper.GetString("gRpc.omniflixIp"), viper.GetString("gRpc.omniflixPort"))
 	grpcConn, err := rpc.InitChainRpcCli(endpoint)
 	if err != nil {
-		logger.Error("Failed to create iris gRPC client, err:", err)
+		logger.Error("Failed to create omniflix gRPC client, err:", err)
 		return nil, err
 	}
 
 	txCli := tx.NewServiceClient(grpcConn)
 	nftCli := nft.NewQueryClient(grpcConn)
 
-	return &IrisCli{
+	return &OmniflixCli{
 		ChainCli: &rpc.ChainCli{
 			TxCli:  txCli,
 			NFTCli: nftCli,

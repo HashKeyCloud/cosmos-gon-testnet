@@ -1,15 +1,30 @@
 gRpc:
-  irisIp: "http://34.80.93.133"
+  irisIp: "34.80.93.133"
   irisPort: "9090"
 
-  stargazeIp: "http://grpc-1.elgafar-1.stargaze-apis.com"
+  stargazeIp: "grpc-1.elgafar-1.stargaze-apis.com"
   stargazePort: "26660"
 
-  junoIp: "http://juno-testnet-grpc.polkachu.com"
+  junoIp: "juno-testnet-grpc.polkachu.com"
   junoPort: "12690"
 
-  uptickIp: "http://52.220.252.160"
+  uptickIp: "52.220.252.160"
   upticePort: "9090"
 
-  omniflixIp: "http://65.21.93.56"
+  omniflixIp: "65.21.93.56"
   omniflixPort: "9090"
+
+monitor:
+  timeInterval: 600
+
+postgres:
+  user: "ubuntu"
+  password: "hashquark123"
+  name: "gon"
+  host: "152.32.216.250"
+  port: "5432"
+
+
+log:
+  path: "/Users/charlesd/cosmos-gon-testnet/log/log.json"
+  level: "info"

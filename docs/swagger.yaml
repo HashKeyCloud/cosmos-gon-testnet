@@ -1,0 +1,130 @@
+definitions:
+  handler.Response:
+    properties:
+      body: {}
+      code:
+        type: string
+      message:
+        type: string
+      message_zh:
+        type: string
+      result:
+        type: boolean
+    type: object
+  types.AllNFT:
+    properties:
+      classID:
+        type: string
+      nftid:
+        type: string
+    required:
+    - classID
+    - nftid
+    type: object
+host: 127.0.0.1:8080
+info:
+  contact:
+    email: wangzezheng@hashquark.io
+    name: API Support
+    url: http://www.hashquark.io
+  description: This is a Cosmos GoN dashboard.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://hashquark.io
+  title: Cosmos GoN API
+  version: "1.0"
+paths:
+  /server/issueNFT:
+    get:
+      consumes:
+      - application/json
+      description: get NFT issue events
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.Response'
+      summary: Get NFT Issue events
+      tags:
+      - Server
+  /server/mintNFT:
+    get:
+      consumes:
+      - application/json
+      description: get NFT mint events
+      parameters:
+      - description: classId
+        in: query
+        items:
+          type: string
+        name: classId
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.Response'
+      summary: Get NFT Mint events
+      tags:
+      - Server
+  /server/mintNFTs:
+    get:
+      consumes:
+      - application/json
+      description: get all NFT mint events
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.Response'
+      summary: Get All NFT Mint events
+      tags:
+      - Server
+  /server/transferNFT:
+    post:
+      consumes:
+      - application/json
+      description: get NFT mint events
+      parameters:
+      - description: nfts
+        in: body
+        name: nfts
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/types.AllNFT'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.Response'
+      summary: Get NFT Mint events
+      tags:
+      - Server
+  /server/transferNFTs:
+    get:
+      consumes:
+      - application/json
+      description: get all NFT transfer path
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.Response'
+      summary: Get All NFT Transfer Path
+      tags:
+      - Server
+swagger: "2.0"
