@@ -39,5 +39,5 @@ create table transfer_NFT
     nft_id        text      not null,
     sender        text      not null,
     receiver      text      not null,
-    primary key (tx_hash)
+    primary key (tx_hash, base_class_id, nft_id)
 );

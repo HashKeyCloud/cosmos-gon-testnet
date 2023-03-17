@@ -257,7 +257,7 @@ func (dc *DbCli) GetMintNFTFromDb() ([]*types.MintNFT, error) {
 
 func (dc *DbCli) GetNFTTransfer(baseClassId, nftId string) ([]string, error) {
 	transfer := make([]string, 0)
-	sqld := `select receiver from transfer_NFT WHERE base_class_id = $1 AND nft_id = $2  ORDER BY transfer_NFT.timestamp ;`
+	sqld := `select receiver from transfer_NFT WHERE base_class_id = $1 AND nft_id = $2  ORDER BY transfer_NFT.timestamp;`
 	err := dc.Conn.Select(&transfer, sqld, baseClassId, nftId)
 	if err != nil {
 		logger.Errorf("Failed to query NFT transfer info from db, err:%v\n", err)
