@@ -211,12 +211,10 @@ func (dc *DbCli) BatchSaveTransferNFT(TransferNFTs []*types.TransferNFT) error {
 				receiver
 			)
 			VALUES %v
-			ON  CONFLICT (tx_hash) DO UPDATE SET
+			ON  CONFLICT (tx_hash, base_class_id, nft_id) DO UPDATE SET
 				block_height = EXCLUDED.block_height,
 				timestamp = EXCLUDED.timestamp,
 				class_id = EXCLUDED.class_id,
-				base_class_id = EXCLUDED.base_class_id,
-				nft_id = EXCLUDED.nft_id,
 				sender = EXCLUDED.sender,
 				receiver = EXCLUDED.receiver;
 		`, strings.Join(valueStrings, ","))
