@@ -15,7 +15,7 @@ gRpc:
   omniflixPort: "9090"
 
 monitor:
-  timeInterval: 600
+  timeInterval: 10
 
 postgres:
   user: "ubuntu"
